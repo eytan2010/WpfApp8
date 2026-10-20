@@ -1,0 +1,57 @@
+﻿<Window x:Class="HotelBookingApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="חישוב עלות הזמנת חדר במלון" Height="480" Width="680"
+        FlowDirection="RightToLeft" WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+      
+        <TextBlock Text="חישוב עלות שהייה במלון" 
+                   FontSize="22" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="#2C3E50"/>
+
+       
+        <GroupBox Header="סוג החדר" Grid.Row="1" Margin="0,0,0,15" Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton x:Name="RbSingle" Content="חדר יחיד" Margin="15,0" IsChecked="True" Checked="RoomType_Checked"/>
+                <RadioButton x:Name="RbDouble" Content="חדר זוגי" Margin="15,0" Checked="RoomType_Checked"/>
+                <RadioButton x:Name="RbSuite" Content="סוויטה" Margin="15,0" Checked="RoomType_Checked"/>
+            </StackPanel>
+        </GroupBox>
+
+        
+        <GroupBox Header="תאריכי שהייה" Grid.Row="2" Margin="0,0,0,15" Padding="10">
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="15,0">
+                    <TextBlock Text="תאריך הגעה:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="DpArrival" SelectedDateChanged="OnDatesOrRoomChanged"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="15,0">
+                    <TextBlock Text="תאריך עזיבה:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="DpDeparture" SelectedDateChanged="OnDatesOrRoomChanged"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <Border Grid.Row="3" Background="#F8F9FA" BorderBrush="#DEE2E6" BorderThickness="1" CornerRadius="8" Padding="15">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="TxtBreakdown" Text="יש לבחור תאריך הגעה ותאריך עזיבה" 
+                           FontSize="14" Foreground="#495057" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TxtTotalPrice" Text="סה'כ לתשלום: 0 ₪" 
+                           FontSize="20" FontWeight="Bold" Foreground="#2E7D32" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
